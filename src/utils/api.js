@@ -30,7 +30,8 @@ export const fetchMonitorData = async () => {
         api_key: API_KEY,
         format: 'json',
         custom_uptime_ranges: generateTimeRanges(),
-        logs: 1
+        logs: 1,
+        response_times: 1
       },
       {
         params: {
