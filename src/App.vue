@@ -54,9 +54,8 @@
     <div v-else class="flex-1 p-3 sm:p-8">
       <main class="max-w-7xl mx-auto space-y-8">
         <Header :title="title" :is-refreshing="isRefreshing" :is-dark="isDark" v-model:sort="sort"
+          :show-logout="protectedAccess" @logout="logout"
           @refresh="load" @toggle-theme="toggleTheme" @toggle-language="toggleLanguage" />
-        <button v-if="protectedAccess" class="px-3 h-9 rounded-full text-sm text-gray-600 dark:text-gray-300
-          bg-white dark:bg-gray-800 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors" @click="logout">{{ t('access.logout') }}</button>
         <Stats :monitors="monitors" />
         <Card :monitors="monitors" :sort="sort" :error="error" :refreshing="isRefreshing" @update-monitor="onPatch" />
       </main>
