@@ -15,13 +15,12 @@
         </div>
       </Transition>
     </div>
-    <div v-if="!authenticated" class="flex-1 flex items-center justify-center p-6">
-      <form class="card-base w-full max-w-sm p-6 sm:p-8 rounded-2xl backdrop-blur-sm animate-fade space-y-6" @submit.prevent="login">
+    <div v-if="!authenticated && !checking" class="flex-1 flex items-center justify-center p-6">
+      <form class="card-base w-full max-w-sm p-6 sm:p-8 rounded-2xl backdrop-blur-sm space-y-6" @submit.prevent="login">
         <div class="flex items-center gap-3">
           <img src="/logo.svg" :alt="t('header.logo')" class="w-8 h-8 sm:w-10 sm:h-10" />
           <h1 class="text-lg sm:text-2xl font-bold text-gray-800 dark:text-gray-100">{{ title }}</h1>
         </div>
-        <p v-if="checking" class="text-sm text-gray-500 dark:text-gray-400" role="status">{{ t('access.checking') }}</p>
         <template v-if="!checking && !checkFailed">
           <label for="access-password" class="block text-sm font-medium text-gray-600 dark:text-gray-300">{{ t('access.password') }}</label>
           <div class="relative">
@@ -51,7 +50,7 @@
         <button v-if="checkFailed" type="button" class="text-sm text-emerald-600 dark:text-emerald-400" @click="checkAccess">{{ t('access.retry') }}</button>
       </form>
     </div>
-    <div v-else class="flex-1 p-3 sm:p-8">
+    <div v-else-if="authenticated" class="flex-1 p-3 sm:p-8">
       <main class="max-w-7xl mx-auto space-y-8">
         <Header :title="title" :is-refreshing="isRefreshing" :is-dark="isDark" v-model:sort="sort"
           :show-logout="protectedAccess" @logout="logout"
@@ -60,7 +59,8 @@
         <Card :monitors="monitors" :sort="sort" :error="error" :refreshing="isRefreshing" @update-monitor="onPatch" />
       </main>
     </div>
-    <Footer />
+    <div v-else class="flex-1" aria-busy="true" />
+    <Footer v-if="!checking || authenticated" />
   </div>
 </template>
 
