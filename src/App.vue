@@ -21,7 +21,7 @@
           <img src="/logo.svg" :alt="t('header.logo')" class="w-8 h-8 sm:w-10 sm:h-10" />
           <h1 class="text-lg sm:text-2xl font-bold text-gray-800 dark:text-gray-100">{{ title }}</h1>
         </div>
-        <p class="text-sm text-gray-500 dark:text-gray-400" role="status">{{ checking ? t('access.checking') : t('access.prompt') }}</p>
+        <p v-if="checking" class="text-sm text-gray-500 dark:text-gray-400" role="status">{{ t('access.checking') }}</p>
         <template v-if="!checking && !checkFailed">
           <label for="access-password" class="block text-sm font-medium text-gray-600 dark:text-gray-300">{{ t('access.password') }}</label>
           <div class="relative">

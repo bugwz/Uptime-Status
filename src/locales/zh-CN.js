@@ -3,7 +3,6 @@ export default {
     showPassword: '显示密码',
     hidePassword: '隐藏密码',
     checking: '正在验证…',
-    prompt: '请输入访问密码以查看监控面板',
     password: '访问密码',
     login: '进入面板',
     logout: '退出登录',

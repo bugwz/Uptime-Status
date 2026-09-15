@@ -3,7 +3,6 @@ export default {
     showPassword: 'Show password',
     hidePassword: 'Hide password',
     checking: 'Verifying…',
-    prompt: 'Enter the access password to view this dashboard',
     password: 'Access password',
     login: 'Sign in',
     logout: 'Sign out',
