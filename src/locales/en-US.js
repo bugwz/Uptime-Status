@@ -1,4 +1,16 @@
 export default {
+  access: {
+    showPassword: 'Show password',
+    hidePassword: 'Hide password',
+    checking: 'Verifying…',
+    prompt: 'Enter the access password to view this dashboard',
+    password: 'Access password',
+    login: 'Sign in',
+    logout: 'Sign out',
+    retry: 'Retry',
+    wrong: 'Incorrect password',
+    connection: 'Unable to verify access. Check the server configuration or connection.'
+  },
   common: {
     title: 'Status Monitor',
     refreshIn: 'Refresh in',
